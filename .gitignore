@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 vendor
 .idea/
+phpshell/
 alt.zip
 composer.json
 composer.lock

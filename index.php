@@ -16,4 +16,3 @@ $app->get('/', 'HomeController:index')->setName('home');
 $app->get('/mobile', 'HomeController:indexMobil')->setName('homeMobile');
 
 $app->run();
-

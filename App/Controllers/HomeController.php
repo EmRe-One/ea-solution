@@ -2,14 +2,10 @@
 
 namespace App\Controllers;
 
-
-
 class HomeController extends Controller {
 
     public function index($req, $res){
-
         return $this->view->render($res, 'startseite.twig');
-
     }
 
     public function indexMobil($req, $res){
@@ -63,7 +59,6 @@ class HomeController extends Controller {
      * )
      */
     public function getApi($req, $res){
-
         $swagger = \Swagger\scan( __DIR__ . '\..\..\App');
         header('Content-Type: application/json');
 
@@ -71,5 +66,4 @@ class HomeController extends Controller {
     }
 
 }
-
 ?>
