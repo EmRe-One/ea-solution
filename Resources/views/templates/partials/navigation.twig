@@ -1,0 +1,122 @@
+<ul id="dropdown_list" class="dropdown-content">
+    <li><a class="nav_item_zulassung blue-text text-darken-4" href="#!">
+            <i class="material-icons blue-text text-darken-4">school</i>Drop 1</a>
+    </li>
+    <li><a class="nav_item_formulare blue-text text-darken-4" href="#!">
+            <i class="material-icons blue-text text-darken-4">school</i>Drop 2</a>
+    </li>
+    <li><a class="nav_item_preise blue-text text-darken-4" href="#!">
+            <i class="material-icons blue-text text-darken-4">school</i>Drop 3</a>
+    </li>
+    <li><a class="nav_item_wunschkennzeichen blue-text text-darken-4" href="#!">
+            <i class="material-icons blue-text text-darken-4">school</i>Drop 4</a>
+    </li>
+</ul>
+
+
+<nav class="navbar-fixed" role="navigation">
+    <div class="nav-wrapper">
+        <a id="logo-container" href="#html_start" class="brand-logo light-blue-text text-darken-1">
+            <img src="{{ base_url() }}/Resources/img/lb.png">
+        </a>
+
+        <!--
+        <a class="right">
+            <div class="nav-search right">
+                <a href="#" onclick="return false;"><i
+                            class="material-icons blue-text text-darken-4">search</i></a>
+                <div
+                        class="material-search-overlay circle material-search-overlay-color-bg material-search-overlay-hidden"></div>
+                <form class="material-search-form material-search-form-hidden"
+                      action="//www.aktiv-zulassungsdienst.de/neu/search"
+                      autocomplete="off">
+                    <div class="material-search-form-container">
+                        <a href="#" onclick="return false;" class="material-search-close circle">
+                            <i class="material-icons white-text right">highlight_off</i>
+                        </a>
+                        <div class="material-search-form-container-row">
+                            <div class="material-search-label center-align">
+                                <label for="s">Gib dein Suchbegriff ein &amp; tippe auf 'Enter'</label>
+                            </div>
+                            <div class="material-search-input">
+                                <input type="text" id="s" name="s" class="flow-text">
+                                <span class="input-bottom-bar"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </a>
+        -->
+
+        <ul class="right hide-on-med-and-down table-of-contents">
+            <li><a class="nav_item_home blue-text text-darken-4" href="">Home</a></li>
+            <li><a class="nav_item_service blue-text text-darken-4" href="">Link 1</a></li>
+            <li><a class="nav_item_leistungen blue-text text-darken-4 dropdown-button" href=""
+                   data-activates="dropdown_list">Dropdown<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li><a class="nav_item_klienten blue-text text-darken-4" href="">Link 2</a></li>
+            <li><a class="nav_item_kontakt blue-text text-darken-4" href="">Link 3</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            {% if user.email %}
+            <li>
+                <div class="userView">
+                    <img class="background" src="{{ user.picUrl }}">
+                    <span class="blue-text text-darken-4 name"> {{ user.name }} </span>
+                    <span class="blue-text text-darken-4 name"> {{ user.email }} </span>
+                </div>
+            </li>
+            {% endif %}
+            <li><a class="sidenav_item_home blue-text text-darken-4" href="">
+                    <i class="material-icons blue-text text-darken-4">home</i>Home</a>
+            </li>
+            <li><a class="sidenav_item_service blue-text text-darken-4" href="">
+                    <i class="material-icons blue-text text-darken-4">build</i>Link 1</a>
+            </li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion" id="side_nav_collapsible">
+                    <li>
+                        <a class="sidenav_item_leistungen blue-text text-darken-4 collapsible-header" href="">
+                            <i class="material-icons blue-text text-darken-4">arrow_drop_down</i>Dropdown</a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a class="sidenav_item_zulassung blue-text text-darken-4" href="">
+                                        Dropdown 1
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sidenav_item_formulare blue-text text-darken-4" href="">
+                                        Dropdown 2
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="sidenav_item_preise blue-text text-darken-4" href="">
+                                        Dropdown 3
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="sidenav_item_wunschkennzeichen blue-text text-darken-4" href="">
+                                        Dropdown 4
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li><a class="sidenav_item_klienten blue-text text-darken-4" href="">
+                    <i class="material-icons blue-text text-darken-4">group_work</i>Link 2</a>
+            </li>
+            <li><a class="sidenav_item_kontakt blue-text text-darken-4" href="">
+                    <i class="material-icons blue-text text-darken-4">contact_mail</i>Link 3</a>
+            </li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i
+                    class="material-icons blue-text text-darken-4">menu</i></a>
+    </div>
+</nav>

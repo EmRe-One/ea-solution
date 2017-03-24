@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <title>EA - Solution | Homepage</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/custom.css"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Import Google API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <!--<script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?v=3&key=***&libraries=visualization"></script> -->
+
+</head>
+
+<body>
+
+<div id="top_section"></div>
+
+{% include 'templates/partials/navigation.twig' %}
+{% include 'templates/partials/fab.twig' %}
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+{% include 'templates/partials/footer.twig' %}
+
+<div id="html_seitenende"></div>
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/materialize.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/main.js"></script>
+</body>
+</html>
