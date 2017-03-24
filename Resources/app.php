@@ -101,6 +101,29 @@ $container['notFoundHandler'] = function ($container) {
     };
 };
 
+/*===========================================================*
+ *                  Not Allowed Handler                      *
+ *===========================================================*/
+$container['notAllowedHandler'] = function ($container) {
+    return function ($req, $res, $methods) use ($container) {
+        $res->withStatus(405)
+            ->withHeader('Allow', implode(', ', $methods))
+            ->withHeader('Content-Type', 'text/html');
+            //->write('Method must be one of: ' . implode(', ', $methods));
+        return $container->view->render($res, '405.twig');
+    };
+};
+
+/*===========================================================*
+ *             PHP Runtime Error Handler                     *
+ *===========================================================*/
+$container['phpErrorHandler'] = function ($container) {
+    return function ($req, $res, $error) use ($container) {
+        $res->withStatus(405)
+            ->withHeader('Content-Type', 'text/html');
+        return $container->view->render($res, '500.twig', ['errors' => $error ]);
+    };
+};
 //Routes
 require __DIR__ . '/../App/Routes/routes.php';
 require __DIR__ . '/../App/Routes/v1_api_users.php';
