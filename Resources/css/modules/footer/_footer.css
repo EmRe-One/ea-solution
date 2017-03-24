@@ -1,0 +1,15 @@
+footer.page-footer {
+    background-color: #1C2A48;
+    bottom: 0;
+    margin: 0;
+    position: static;
+    width: 100%;
+}
+
+footer.page-footer > .footer-container{
+    padding: 0 100px;
+}
+
+footer.page-footer > .footer-copyright{
+    background-color: rgba(0,0,0,0.4);
+}
