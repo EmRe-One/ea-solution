@@ -2,14 +2,21 @@
 
 namespace App\Controllers;
 
+use App\Modules\Module;
+
 class HomeController extends Controller {
 
     public function index($req, $res){
-        return $this->view->render($res, 'startseite.twig');
-    }
 
-    public function indexMobil($req, $res){
-        return $this->view->render($res, 'startseiteMobil.twig');
+        $moduleTwig = new Module($this->container);
+
+        return $this->view->render($res, 'app.twig',
+            [   'title' => 'Home',
+                'modules' => [
+                    $moduleTwig->getRenderedTwig('modules/header/header_main.json'),
+                    $moduleTwig->getRenderedTwig('modules/slider/slider.json')
+                ]
+            ]);
     }
 
     /**

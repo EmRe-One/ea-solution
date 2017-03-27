@@ -8,7 +8,7 @@ class EmailExistsException extends ValidationException{
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'User is not registered.'
+            self::STANDARD => 'Email Adresse oder Passwort fehlerhaft.'
         ]
     ];
 

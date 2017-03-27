@@ -5,18 +5,20 @@
  *
  * Made By MaterializeCSS.com
  */
-body,
-html {
-    font-size: calc(100vh / 1200 * 20);
-    font-family: "Roboto", sans-serif;
-}
-
-main {
-    min-height: 100vh;
-}
 
 #html_start {
     height: 100vh;
+}
+
+.container__with-pattern {
+    background: url(../img/overlays/pattern.png) fixed repeat;
+    border-radius: 3em;
+    padding: 2em;
+}
+
+.module__wrapper {
+    padding: 5em;
+    min-height: 400px;
 }
 
 .blue-text.text-darken-4 {
@@ -35,6 +37,11 @@ main {
 
 .text-center{
     text-align: center;
+}
+
+.btn.mdi:hover:before {
+    fill: white;
+    color: white;
 }
 
 .title_h1{
@@ -160,29 +167,16 @@ a.yellow-background:hover{
     right: 48px;
 }
 
+#form__login {
+    padding: 20px;
+}
 /*  Ab hier ist L */
 @media only screen and (min-width: 993px) {
-    nav .nav-wrapper {
-        position: relative;
-        height: 100%;
-        padding: 0 50px;
-    }
+
 }
 
 /* Bis hier ist M */
 @media only screen and (max-width : 992px) {
-
-    nav ul a.active {
-        box-shadow: 0 0 10px #00003D;
-    }
-
-    nav ul a{
-        font-weight: 300;
-    }
-
-    nav ul:hover a:not(.active){
-        font-weight: 500;
-    }
 
     .title_h1{
         font-size: 5rem;
@@ -193,25 +187,20 @@ a.yellow-background:hover{
         margin-top: 40px;
     }
 
-    h4 {
-        font-size: 2rem;
-    }
-
     .fixed-action-btn{
         bottom: 24px;
         right: 24px;
     }
+
 }
 
 /* Bis hier ist S */
 @media only screen and (max-width : 600px) {
-    .title_h1{
-        font-size: 4rem;
-    }
 
     .fixed-action-btn{
         bottom: 12px;
         right: 12px;
     }
+
 }
 

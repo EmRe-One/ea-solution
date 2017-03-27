@@ -1,0 +1,13 @@
+<div id="{{ identifier }}" class="slider {% if fullscreen %}fullscreen{% endif %}">
+    <ul class="slides">
+        {% for slide in slider %}
+            <li>
+                <img src="{{ slide.img }}">
+                <div class="caption {{ slide.class }}">
+                    <h3>{{ slide.title }}</h3>
+                    <h5 class="light grey-text text-lighten-3">{{ slide.subtitle }}</h5>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

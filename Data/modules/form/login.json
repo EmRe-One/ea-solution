@@ -1,0 +1,6 @@
+{
+    "$scheme": "",
+    "resourceType": "modules/form/login",
+    "identifier": "form_login",
+    "action": "/login"
+}

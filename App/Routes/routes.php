@@ -1,16 +1,15 @@
 <?php
 
-
 $app->get('/api', 'HomeController:getApi')->setName('api');
 
 $app->group('', function (){
 
     $this->get('/registry', 'UserController:getRegistryView')->setName('user.registry');
-    $this->post('/registry', 'UserController:postRegister');
+    $this->post('/registry', 'UserController:postRegistry');
 
-    $this->get('/login', 'AuthController:getLoginView')->setName('user.login');
-    $this->post('/login', 'AuthController:postLogin');
+    $this->get('/login', 'AuthController:getLoginView');
+    $this->post('/login', 'AuthController:postLogin')->setName('auth.login');
 
-})->add($container->csrf);
+});
 
 

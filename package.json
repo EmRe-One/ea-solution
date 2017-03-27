@@ -1,0 +1,22 @@
+{
+  "name": "ea-solution",
+  "version": "1.0.0",
+  "description": "Meine Website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emre-One/ea-solution.git"
+  },
+  "author": "Emre Akgül <emre.akguel.1@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Emre-One/ea-solution/issues"
+  },
+  "homepage": "https://github.com/Emre-One/ea-solution#readme",
+  "dependencies": {
+    "material-components-web": "^0.7.0"
+  }
+}

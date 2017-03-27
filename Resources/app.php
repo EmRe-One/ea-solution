@@ -12,11 +12,11 @@ $app = new Slim\App([
         'db' => [
             'driver' => 'mysql',
             'host' => 'dd24002.kasserver.com',
-            'database' => 'd024274b',
-            'username' => 'd024274b',
-            'password' => 'Wmn8xp3BTaskubh5',
+            'database' => 'd025c831',
+            'username' => 'd025c831',
+            'password' => 'JuYgTqmPfc5awWNY',
             'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci'
+            'collation' => 'utf8_bin'
         ]
     ]
 ]);
@@ -48,6 +48,13 @@ $container['view'] = function ($container) {
     return $view;
 };
 
+$container['twig'] = function ($container) {
+    $loader = new Twig_Loader_Filesystem(__DIR__ . '/views');
+    $twig = new Twig_Environment($loader, []);
+
+    return $twig;
+};
+
 $container['validator'] = function ($container) {
     return new \App\Validation\Validator;
 };
@@ -72,13 +79,21 @@ $container['UserAdressController'] = function ($container) {
 };
 
 $container['csrf'] = function ($container) {
-    return new \Slim\Csrf\Guard;
+    $guard = new \Slim\Csrf\Guard();
+    /*$guard->setFailureCallable(function ($req, $res, $next) {
+        // $req = $req->withAttribute("csrf_status", false);
+        $res->write('errooooor');
+        return $next($req, $res);
+    });*/
+    return $guard;
 };
 
 /*===========================================================*
  *               Registry the Middleware                     *
  *===========================================================*/
-//$app->add(new \App\Middleware\CsrfViewMiddleware($container));
+$app->add(new \App\Middleware\CsrfViewMiddleware($container));
+
+$app->add($container->csrf);
 
 /*===========================================================*
  *                  Registry the Auth                        *
@@ -97,7 +112,10 @@ $container['notFoundHandler'] = function ($container) {
     return function ($req, $res) use ($container) {
         $res->withStatus(404)
             ->withHeader('Content-Type', 'text/html');
-        return $container->view->render($res, '404.twig');
+        return $container->view->render($res, 'app.twig',
+            [   'title' => 'Nicht gefunden',
+                'modules' => ['404.twig']
+            ]);
     };
 };
 
@@ -109,8 +127,10 @@ $container['notAllowedHandler'] = function ($container) {
         $res->withStatus(405)
             ->withHeader('Allow', implode(', ', $methods))
             ->withHeader('Content-Type', 'text/html');
-            //->write('Method must be one of: ' . implode(', ', $methods));
-        return $container->view->render($res, '405.twig');
+        return $container->view->render($res, 'app.twig',
+            [   'title' => 'Kein Zutritt',
+                'modules' => ['405.twig']
+            ]);
     };
 };
 
@@ -119,12 +139,17 @@ $container['notAllowedHandler'] = function ($container) {
  *===========================================================*/
 $container['phpErrorHandler'] = function ($container) {
     return function ($req, $res, $error) use ($container) {
-        $res->withStatus(405)
+        $res->withStatus(500)
             ->withHeader('Content-Type', 'text/html');
-        return $container->view->render($res, '500.twig', ['errors' => $error ]);
+
+        return $container->view->render($res, 'app.twig',
+            [   'title' => 'PHP Runtime Error',
+                'error' => $error,
+                'modules' => ['500.twig']
+            ]);
     };
 };
+
 //Routes
 require __DIR__ . '/../App/Routes/routes.php';
-require __DIR__ . '/../App/Routes/v1_api_users.php';
-
+//require __DIR__ . '/../App/Routes/v1_api_users.php';

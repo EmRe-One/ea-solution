@@ -2,12 +2,14 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <title>EA - Solution | Homepage</title>
+    <title>EA - Solution | {{ title }}</title>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/materialdesignicons.min.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/material-components-web.css"/>
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/_global.css"/>
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/nav/_nav.css"/>
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/footer/_footer.css"/>
@@ -27,17 +29,20 @@
 
 <div id="top_section"></div>
 
-{% include 'templates/partials/nav.twig' %}
-{% include 'templates/partials/fab.twig' %}
+{% include 'partials/nav.twig' %}
+{% include 'partials/fab.twig' %}
+
+{% if not user %}
+    {% include 'modules/form/login_modal.twig' %}
+{% endif %}
 
 <main>
-
-    {% block content %}
-    {% endblock %}
-
+    {% for module in modules %}
+        {{ module | raw }}
+    {% endfor %}
 </main>
 
-{% include 'templates/partials/footer.twig' %}
+{% include 'partials/footer.twig' %}
 
 <div id="html_seitenende"></div>
 <!--Import jQuery before materialize.js-->
@@ -45,6 +50,8 @@
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/materialize.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/skrollr.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/custom.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/material-components-web.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/_custom.js"></script>
 </body>
 </html>

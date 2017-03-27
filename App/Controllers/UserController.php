@@ -5,72 +5,73 @@ namespace App\Controllers;
 use App\Models\User;
 use App\UUID;
 use Respect\Validation\Validator as v;
-
+use App\Modules\Module;
 
 class UserController extends Controller
 {
 
     public function getRegistryView($req, $res)
     {
-        return $this->view->render($res, 'registry.twig');
+        $params = $req->getParams();
+
+        $moduleTwig = new Module( $this->container );
+
+        return $this->view->render($res, 'app.twig',
+            [   'title' => 'Registrieren',
+                'modules' => [
+                    $moduleTwig->getRenderedTwig( 'modules/form/registry.json',
+                        [   'userRegistry' => [
+                                'email' => 'emre.akguel.1@gmail.com', //$params['email'],
+                                'name' => 'Akgül', //$params['name'],
+                                'vorname' => 'Emre' //$params['vorname']
+                            ]
+                        ], true)
+                ]
+            ]
+        );
     }
 
     public function postRegistry($req, $res)
     {
+        $params = $req->getParams();
 
-    }
+        $params['email'] = trim( strtolower( $params['email'] ) );
 
-
-    /**
-     * @SWG\Post(
-     *     path="/api/v1/users/registry",
-     *     operationId="addUser",
-     *     description="Creates a new User in the Database.  Duplicates by email are not allowed",
-     *     produces={"application/json"},
-     *     @SWG\Parameter(
-     *         name="user",
-     *         in="body",
-     *         description="User to add in DB",
-     *         required=true,
-     *         @SWG\Schema(ref="#/definitions/userModel"),
-     *     ),
-     *     @SWG\Response(
-     *         response=201,
-     *         description="Create a User successfully",
-     *         @SWG\Schema(ref="#/definitions/userModel")
-     *     ),
-     *     @SWG\Response(
-     *         response="400",
-     *         description="Validation error",
-     *         @SWG\Schema(ref="#/definitions/errorModel")
-     *     )
-     * )
-     */
-    public function registry_api($req, $res)
-    {
-        $body = $req->getParsedBody();
-        $body['email'] = strtolower($body['email']);
-
-        $validation = $this->container->validator->validate($body, [
-            'name' => v::notEmpty()->alpha(),
-            'vorname' => v::notEmpty()->alpha(),
+        $validation = $this->container->validator->validate($params, [
+            'name' => v::notEmpty()->alpha('äöüß-'),
+            'vorname' => v::notEmpty()->alpha('äöüß-'),
             'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
-            'password' => v::noWhitespace()->notEmpty()
+            'password' => v::noWhitespace()->notEmpty()->equals($params['repeat_password'])
         ]);
 
-        if ($validation->failed()) {
+        if ( $validation->failed() ) {
             $errors = $validation->getErrors();
-            $errors["code"] = 400;
 
-            return $res->withJson( $errors , 400);
+            $moduleTwig = new Module( $this->container );
+
+            $res->withStatus(400);
+            return $this->view->render($res, 'app.twig',
+                [   'title' => 'Registrierung fehlgeschlagen',
+                    'modules' => [
+                        $moduleTwig->getRenderedTwig( 'modules/form/registry.json',
+                            [   'errors' => $errors,
+                                'userRegistry' => [
+                                    'email' => $params['email'],
+                                    'name' => $params['name'],
+                                    'vorname' => $params['vorname']
+                                ]
+                            ], true)
+                    ]
+                ]
+            );
         }
 
         $user = User::create([
             "_id" => UUID::v4(),
-            "_name" => $body['name'],
-            "_vorname" => $body['vorname'],
-            "_email" => $body['email'],
-            "_password" => sha1($body['password']),
+            "_name" => $params['name'],
+            "_vorname" => $params['vorname'],
+            "_email" => $params['email'],
+            "_password" => sha1($params['password']),
             "_token" => UUID::v4()
         ]);
 
@@ -88,58 +89,5 @@ class UserController extends Controller
 
         }
     }
-
-    /**
-     * @SWG\Get(
-     *     path="/api/v1/users/{token}/{id}",
-     *     description="Returns a user based on a single ID",
-     *     operationId="getUserById",
-     *     @SWG\Parameter(
-     *         description="ID of user to fetch",
-     *         in="path",
-     *         name="id",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     @SWG\Parameter(
-     *         description="token of user because of Auth",
-     *         in="path",
-     *         name="token",
-     *         required=true,
-     *         type="string"
-     *     ),
-     *     produces={"application/json"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="user response",
-     *         @SWG\Schema(ref="#/definitions/userModel")
-     *     ),
-     *     @SWG\Response(
-     *         response="401",
-     *         description="Auth failed",
-     *         @SWG\Schema(ref="#/definitions/errorModel")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="User not found",
-     *         @SWG\Schema(ref="#/definitions/errorModel")
-     *     ),
-     * )
-     */
-    public function getUser_api($req, $res, $args)
-    {
-
-        // from middleware AuthMiddlewareByIdAndToken
-        $user = $req->getAttribute('user');
-
-
-        unset($user['_password']);
-        unset($user['_password_code']);
-        unset($user['_password_code_time']);
-        unset($user['deleted_at']);
-
-        return $res->withJson($user, 200);
-    }
-
 
 }

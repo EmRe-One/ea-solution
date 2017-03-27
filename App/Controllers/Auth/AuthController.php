@@ -6,17 +6,78 @@ use App\Controllers\Controller;
 use App\Models\User;
 use App\UUID;
 use Respect\Validation\Validator as v;
+use App\Modules\Module;
 
 class AuthController extends Controller
 {
 
-    public function getLoginView($req, $res)
-    {
-        return $this->view->render($res, 'login.twig');
+    public function getLoginView($req, $res) {
+
+        $moduleTwig = new Module( $this->container );
+
+        return $this->view->render($res, 'app.twig',
+            [   'title' => 'Login',
+                'modules' => [
+                    $moduleTwig->getRenderedTwig( 'modules/form/login.json', [], true)
+                ]
+            ]
+        );
     }
 
     public function postLogin($req, $res)
     {
+        $params = $req->getParams();
+
+        $params['email'] = trim( strtolower( $params['email'] ) );
+
+        $validation = $this->container->validator->validate($params, [
+            'email' => v::notEmpty()->email()->emailExists(),
+            'password' => v::notEmpty()
+        ]);
+
+        if ($validation->failed()) {
+            $errors = $validation->getErrors();
+
+            $moduleTwig = new Module( $this->container );
+            $nameKey = $this->csrf->getTokenNameKey();
+            $valueKey = $this->csrf->getTokenValueKey();
+
+            return $this->view->render($res, 'app.twig',
+                [   'title' => 'Login fehlgeschlagen',
+                    'modules' => [
+                        $moduleTwig->getRenderedTwig( 'modules/form/login.json',
+                        [   'errors' => $errors,
+                            'userLogin' => [
+                                'email' => $params['email']
+                            ]
+                        ], true )
+                    ]
+                ]
+            );
+        }
+
+        $user = User::where([
+            '_email' => $params['email'],
+            '_password' => sha1($params['password'])
+        ])->first();
+
+        if ($user) {
+
+            $user->_token = UUID::v4();
+            $user->save();
+
+            $user = json_decode(json_encode($user), true);
+
+            unset($user['_password']);
+            unset($user['_password_code']);
+            unset($user['_password_code_time']);
+            unset($user['deleted_at']);
+
+            return $res->withJson($user, 200);
+
+        } else {
+            return $res->withJson(array("code" => "401", "message" => "Login failed"), 401);
+        }
 
         $this->view->getEnvironment()->setGlobal('user', [
             'email' => '$users.email@gmail.com',

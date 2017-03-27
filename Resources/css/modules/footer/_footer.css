@@ -13,3 +13,8 @@ footer.page-footer > .footer-container{
 footer.page-footer > .footer-copyright{
     background-color: rgba(0,0,0,0.4);
 }
+
+.footer_social:hover .footer-social__title {
+    color: white;
+}
+

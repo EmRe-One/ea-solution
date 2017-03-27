@@ -16,18 +16,46 @@
 <!-- #################################################################
      #                         Navigation                            #
      ################################################################# -->
-<nav class="navbar-fixed z-depth-2" role="navigation">
+<nav class="navbar-fixed z-depth-2 skrollable" role="navigation">
+    <!-- <div class="crystal_container">
+        <div class="crystal" id="c01"></div>
+        <div class="crystal" id="c02"></div>
+        <div class="crystal" id="c03"></div>
+        <div class="crystal" id="c04"></div>
+        <div class="crystal" id="c05"></div>
+        <div class="crystal" id="c06"></div>
+        <div class="crystal" id="c07"></div>
+        <div class="crystal" id="c08"></div>
+        <div class="crystal" id="c09"></div>
+        <div class="crystal" id="c10"></div>
+    </div> -->
+
     <div class="nav-wrapper">
-        <a id="logo-container" href="#html_start" class="brand-logo light-blue-text text-darken-1">
+        <a id="logo-container" href="{{ base_url() }}" class="brand-logo light-blue-text text-darken-1">
             <img src="{{ base_url() }}/Resources/img/logos/ea_atom_small.png">
         </a>
 
-        <a class="right">
+        <ul class="right hide-on-med-and-down table-of-contents">
+            <li><a class="nav_item_home blue-text text-darken-4" href="">Home</a></li>
+            <li><a class="nav_item_service blue-text text-darken-4" href="">Link 1</a></li>
+            <li><a class="nav_item_leistungen blue-text text-darken-4 dropdown-button" href=""
+                   data-activates="dropdown_list">Dropdown<i class="material-icons right">arrow_drop_down</i>
+                </a>
+            </li>
+            <li><a class="nav_item_klienten blue-text text-darken-4" href="">Link 2</a></li>
+            <li><a class="nav_item_kontakt blue-text text-darken-4" href="">Link 3</a></li>
+            {% if user %}
+                <li><a class="nav_item_logout blue-text text-darken-4" href="{{ path_for( user.logout ) }}">Ausloggen</a></li>
+            {% else %}
+                <li><a class="nav_item_login blue-text text-darken-4" href="{{ path_for( user.registry ) }}">Registrieren</a></li>
+                <li><a class="nav_item_login blue-text text-darken-4" href="#modal_login">Login</a></li>
+            {% endif %}
+            <li><a class="material-search-open"><i class="material-icons blue-text text-darken-4">search</i></a></li>
+        </ul>
+
+        <a>
             <div class="nav-search right">
-                <a href="#" onclick="return false;"><i
-                            class="material-icons blue-text text-darken-4">search</i></a>
-                <div
-                        class="material-search-overlay circle material-search-overlay-color-bg material-search-overlay-hidden"></div>
+                <div class="material-search-overlay circle material-search-overlay-color-bg material-search-overlay-hidden"></div>
                 <form class="material-search-form material-search-form-hidden"
                       action="//www.aktiv-zulassungsdienst.de/neu/search"
                       autocomplete="off">
@@ -48,17 +76,6 @@
                 </form>
             </div>
         </a>
-
-        <ul class="right hide-on-med-and-down table-of-contents">
-            <li><a class="nav_item_home blue-text text-darken-4" href="">Home</a></li>
-            <li><a class="nav_item_service blue-text text-darken-4" href="">Link 1</a></li>
-            <li><a class="nav_item_leistungen blue-text text-darken-4 dropdown-button" href=""
-                   data-activates="dropdown_list">Dropdown<i class="material-icons right">arrow_drop_down</i>
-                </a>
-            </li>
-            <li><a class="nav_item_klienten blue-text text-darken-4" href="">Link 2</a></li>
-            <li><a class="nav_item_kontakt blue-text text-darken-4" href="">Link 3</a></li>
-        </ul>
 
         <ul id="nav-mobile" class="side-nav">
             {% if user.email %}

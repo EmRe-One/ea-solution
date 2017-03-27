@@ -39,7 +39,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class User extends Model
 {
-
     use SoftDeletes;
 
     protected $table = 'tbl_user';
@@ -61,10 +60,9 @@ class User extends Model
         "_token"
     ];
 
-    public function getAdress($id)
+    public function getAdress( $id )
     {
-
-        $adress = Adress::where('_user_id', $id) - first();
+        $adress = Adress::where('_user_id', $id)->first();
         if (!$adress) {
             $adress = Adress::create([
                 '_adress_id' => UUID::v4(),

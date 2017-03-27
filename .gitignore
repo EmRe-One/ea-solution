@@ -2,6 +2,7 @@
 vendor
 .idea/
 phpshell/
+node_modules/
 alt.zip
 composer.json
 composer.lock

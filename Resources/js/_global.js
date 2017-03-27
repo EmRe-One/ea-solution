@@ -13,9 +13,32 @@
         }
     );
 
+    $('#modal_login').modal({
+            dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            opacity: .5, // Opacity of modal background
+            inDuration: 300, // Transition in duration
+            outDuration: 200, // Transition out duration
+            startingTop: '20%', // Starting top style attribute
+            endingTop: '25%', // Ending top style attribute
+            ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                // if opend
+            },
+            complete: function() {
+                // if closed
+            } // Callback for Modal close
+        }
+    );
+
     $('.parallax').parallax();
 
-    $('.nav-search > a').on('click', function () {
+    $('.slider').slider({
+        indicators: true,
+        height: 400,
+        transition: 500,
+        interval: 5000
+    });
+
+    $('.material-search-open').on('click', function () {
         search_form_open(true);
     });
 
@@ -54,5 +77,4 @@
             search_form_open(false);
         }
     }); // end of scroll
-
 })();

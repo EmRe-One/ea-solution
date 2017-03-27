@@ -1,0 +1,26 @@
+{
+    "$scheme": "",
+    "resourceType": "modules/slider/slider",
+    "identifier": "slider-1",
+    "fullscreen": false,
+    "slider": [
+        {
+            "img": "http://lorempixel.com/580/250/nature/1",
+            "title": "Titel 1",
+            "subtitle": "Subtitle 1",
+            "class": "center-align"
+        },
+        {
+            "img": "http://lorempixel.com/580/250/nature/2",
+            "title": "Titel 2",
+            "subtitle": "Subtitle 2",
+            "class": "left-align"
+        },
+        {
+            "img": "http://lorempixel.com/580/250/nature/3",
+            "title": "Titel 3",
+            "subtitle": "Subtitle 3",
+            "class": "right-align"
+        }
+    ]
+}

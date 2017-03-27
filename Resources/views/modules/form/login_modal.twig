@@ -1,0 +1,33 @@
+<!-- Modal Structure -->
+<div id="modal_login" class="modal">
+    <form id="form__login" method="POST" action='{{ path_for('auth.login') }}' autocomplete='off'>
+        <div class="modal-content center-align">
+            <h4>Login</h4>
+            <div class="row">
+                <div class="input-field col s6 offset-s3 left-align">
+                    <i class="mdi mdi-email mdi-24px mdi-dark prefix"></i>
+                    <input id="form_email" name="email" type="email" class="validate" required>
+                    <label for="form_email" date-error="Fehlerhafte E-Mail">E-Mail:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 offset-s3 left-align">
+                    <i class="mdi mdi-login mdi-24px mdi-dark prefix"></i>
+                    <input id="form_password" name="password" type="password" required>
+                    <label for="form_password">Password:</label>
+                </div>
+            </div>
+
+            {{ csrf.field | raw }}
+
+        </div>
+
+        <div class="modal-footer center">
+            <button type="submit" class="btn btn-primary blue-background">
+                Login <i class="material-icons right">send</i>
+            </button>
+            <a href="{{ path_for(user.registry) }}" class="modal-action waves-effect waves-red btn-flat">Registrieren</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat left">Abbrechen</a>
+        </div>
+    </form>
+</div>
