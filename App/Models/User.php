@@ -2,43 +2,11 @@
 
 namespace App\Models;
 
-use App\UUID;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+class User extends Model {
 
-/**
- * @SWG\Definition(
- *      definition="userModel",
- *      required={"vorname", "name", "email", "password"},
- *      @SWG\Property(
- *          property="id",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="vorname",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="name",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="email",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="password",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="token",
- *          type="string"
- *      )
- * )
- */
-class User extends Model
-{
     use SoftDeletes;
 
     protected $table = 'tbl_user';
@@ -60,19 +28,12 @@ class User extends Model
         "_token"
     ];
 
-    public function getAdress( $id )
-    {
-        $adress = Adress::where('_user_id', $id)->first();
-        if (!$adress) {
-            $adress = Adress::create([
-                '_adress_id' => UUID::v4(),
-                '_user_id' => $id
-            ]);
-        }
-
-        return $adress;
-    }
-
+    protected $hidden = [
+        '_password',
+        '_password_reset_timestamp',
+        '_password_reset_tokem',
+        'deleted_at'
+    ];
 }
 
 ?>

@@ -71,23 +71,26 @@ class UserController extends Controller
             "_name" => $params['name'],
             "_vorname" => $params['vorname'],
             "_email" => $params['email'],
-            "_password" => sha1($params['password']),
+            "_password" => password_hash( $params['password'], PASSWORD_DEFAULT),
             "_token" => UUID::v4()
         ]);
 
-        if ($user) {
 
-            // macht $user objClass zu json
-            $user = json_decode(json_encode($user), true);
+        return $res->withRedirect( $this->router->pathFor( 'home' ));
+        /* if ($user) {
 
-            unset($user['_password']);
-            unset($user['_password_code']);
-            unset($user['_password_code_time']);
-            unset($user['deleted_at']);
+           /* macht $user objClass zu json
+             $user = json_decode(json_encode($user), true);
 
-            return $res->withJson($user, 201);
+             unset($user['_password']);
+             unset($user['_password_code']);
+             unset($user['_password_code_time']);
+             unset($user['deleted_at']);
 
-        }
+             return $res->withJson($user, 201);
+
+
+         }*/
     }
 
 }

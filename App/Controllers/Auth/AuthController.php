@@ -3,10 +3,11 @@
 namespace App\Controllers\Auth;
 
 use App\Controllers\Controller;
-use App\Models\User;
 use App\UUID;
 use Respect\Validation\Validator as v;
 use App\Modules\Module;
+use Illuminate\Database\Capsule\Manager as DB;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -58,13 +59,14 @@ class AuthController extends Controller
 
         $user = User::where([
             '_email' => $params['email'],
-            '_password' => sha1($params['password'])
+            '_password' => password_hash( $params['password'], PASSWORD_DEFAULT)
         ])->first();
 
         if ($user) {
 
             $user->_token = UUID::v4();
             $user->save();
+
 
             $user = json_decode(json_encode($user), true);
 
