@@ -25,8 +25,11 @@
     color: #00003D !important;
 }
 
-.row {
-    font-size: 17px;
+.error {
+    border: 2px solid darkred;
+    background-color: red;
+    color: white;
+    padding: 2em;
 }
 
 .parallax-container .section {

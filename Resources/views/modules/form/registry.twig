@@ -1,13 +1,19 @@
 <section class="parallax-container valign-wrapper vh100">
 
     <div class="container valign">
-        <div class="row">
-            <div class="error">
-                {% for e in errors %}
-                    {{ e }}
-                {% endfor %}
+        {% if errors %}
+            <div class="row">
+                <div class="col offset-s2 s8">
+                    <div class="error">
+                        <ul>
+                            {% for key,value in errors %}
+                                <li>{{ key }} => {{ value[0] }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        {% endif %}
 
         <div class="row">
             <div class="card col offset-s2 s8 z-depth-2">

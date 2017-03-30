@@ -40,18 +40,6 @@ class Module
 
         $json_array[ 'base_url' ] = 'http://'. $_SERVER['HTTP_HOST'];
 
-        if ($csrf) {
-            $nameKey = $this->csrf->getTokenNameKey();
-            $valueKey = $this->csrf->getTokenValueKey();
-            $nameValue = $this->csrf->getTokenName();
-            $valueValue = $this->csrf->getTokenValue();
-
-            $json_array['csrf_nameKey'] = $nameKey;
-            $json_array['csrf_valueKey'] = $valueKey;
-            $json_array['csrf_name'] = $nameValue;
-            $json_array['csrf_value'] = $valueValue;
-        }
-
         $template = $this->twig->load($json_array['resourceType'] . '.twig');
 
         return $template->render($json_array);
