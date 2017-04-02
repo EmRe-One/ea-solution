@@ -11,6 +11,11 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    public function getLogout($req, $res) {
+        $this->auth->logout();
+
+        return $res->withRedirect($this->router->pathFor('home'));
+    }
 
     public function getLoginView($req, $res) {
 
@@ -18,8 +23,9 @@ class AuthController extends Controller
 
         return $this->view->render($res, 'app.twig',
             [   'title' => 'Login',
+                'nav' => $moduleTwig->getRenderedTwig('modules/nav/nav.json'),
                 'modules' => [
-                    $moduleTwig->getRenderedTwig( 'modules/form/login.json', [], true)
+                    $moduleTwig->getRenderedTwig( 'modules/form/login.json')
                 ]
             ]
         );
@@ -29,7 +35,15 @@ class AuthController extends Controller
     {
         $params = $req->getParams();
 
-        $params['email'] = trim( strtolower( $params['email'] ) );
+        $auth = $this->auth->attempt($params['email'], $params['password']);
+
+        if( !$auth ){
+            return $res->withRedirect($this->router->pathFor('auth.login'));
+        }
+
+        return $res->withRedirect($this->router->pathFor('home'));
+
+        /*$params['email'] = trim( strtolower( $params['email'] ) );
 
         $validation = $this->container->validator->validate($params, [
             'email' => v::notEmpty()->email()->emailExists(),
@@ -37,21 +51,13 @@ class AuthController extends Controller
         ]);
 
         if ($validation->failed()) {
-            $errors = $validation->getErrors();
 
             $moduleTwig = new Module( $this->container );
-            $nameKey = $this->csrf->getTokenNameKey();
-            $valueKey = $this->csrf->getTokenValueKey();
 
             return $this->view->render($res, 'app.twig',
                 [   'title' => 'Login fehlgeschlagen',
                     'modules' => [
-                        $moduleTwig->getRenderedTwig( 'modules/form/login.json',
-                        [   'errors' => $errors,
-                            'userLogin' => [
-                                'email' => $params['email']
-                            ]
-                        ], true )
+                        $moduleTwig->getRenderedTwig( 'modules/form/login.json', [])
                     ]
                 ]
             );
@@ -75,60 +81,75 @@ class AuthController extends Controller
             unset($user['_password_code_time']);
             unset($user['deleted_at']);
 
-            return $res->withJson($user, 200);
+            return $res->withRedirect($this->router->pathFor('home'));
 
         } else {
-            return $res->withJson(array("code" => "401", "message" => "Login failed"), 401);
-        }
+            $moduleTwig = new Module( $this->container );
 
-        $this->view->getEnvironment()->setGlobal('user', [
-            'email' => '$users.email@gmail.com',
-            'name' => '$users.vorname $users.nachname'
-        ]);
+            return $this->view->render($res, 'app.twig',
+                [   'title' => 'Login fehlgeschlagen',
+                    'modules' => [
+                        $moduleTwig->getRenderedTwig( 'modules/form/login.json',
+                            [   'userLogin' => [
+                                    'email' => $params['email']
+                                ]
+                            ])
+                    ]
+                ]
+            );
+        }*/
+
+
     }
 
-    /**
-     * @SWG\Post(
-     *     path="/api/v1/users/login",
-     *     description="Login the user, refresh the Token, and push 'Login':'Success' attribut"
-     *     @SWG\Parameter(
-     *         name="user",
-     *         in="body",
-     *         description="email and password to login",
-     *         required=true,
-     *         @SWG\Schema(ref="#/definitions/userLogin"),
-     *     ),
-     *     @SWG\Response(
-     *          response="200",
-     *          description="Login a user, if correct email and password",
-     *          @SWG\Schema(ref="#/definitions/userModel")
-     *     ),
-     *     @SWG\Response(
-     *          response="400",
-     *          description="Verification failed or Bad Request or User not found",
-     *          @SWG\Schema(ref="#/definitions/errorModel")
-     *     ),
-     *
-     *     @SWG\Response(
-     *          response="401",
-     *          description="Login failed",
-     *          @SWG\Schema(ref="#/definitions/errorModel")
-     *     )
-     * )
-     *
-     * @SWG\Definition(
-     *     definition="userLogin",
-     *     required={"email", "password"},
-     *     @SWG\Property(
-     *          property="email",
-     *          type="string"
-     *     ),
-     *     @SWG\Property(
-     *          property="password",
-     *          type="string"
-     *     )
-     * )
-     */
+    public function getRegistryView($req, $res)
+    {
+        $params = $req->getParams();
+
+        $moduleTwig = new Module( $this->container );
+
+        return $this->view->render($res, 'app.twig',
+            [   'title' => 'Registrieren',
+                'nav' => $moduleTwig->getRenderedTwig('modules/nav/nav.json'),
+                'modules' => [
+                    $moduleTwig->getRenderedTwig( 'modules/form/registry.json')
+                ]
+            ]
+        );
+    }
+
+    public function postRegistry($req, $res)
+    {
+        $params = $req->getParams();
+
+        $params['email'] = trim( strtolower( $params['email'] ) );
+
+        $validation = $this->container->validator->validate($params, [
+            'name' => v::notEmpty()->alpha('äöüß-'),
+            'vorname' => v::notEmpty()->alpha('äöüß-'),
+            'email' => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
+            'password' => v::noWhitespace()->notEmpty()->equals($params['repeat_password'])
+        ]);
+
+        if ( $validation->failed() ) {
+
+            return $res->withRedirect( $this->router->pathFor('auth.registry'));
+        }
+
+        $user = User::create([
+            "_id" => UUID::v4(),
+            "_name" => $params['name'],
+            "_vorname" => $params['vorname'],
+            "_email" => $params['email'],
+            "_password" => password_hash( $params['password'], PASSWORD_DEFAULT),
+            "_token" => UUID::v4()
+        ]);
+
+        $_SESSION['user'] = $user['_id'];
+
+        return $res->withRedirect( $this->router->pathFor( 'home' ));
+    }
+
     public function login_api($req, $res)
     {
         $body = $req->getParsedBody();

@@ -1,0 +1,209 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+#html_start {
+    height: 100vh;
+}
+
+.container__with-pattern {
+    background: url(../img/overlays/pattern.png) fixed repeat;
+    border-radius: 3em;
+    padding: 2em;
+}
+
+.module__wrapper {
+    padding: 5em;
+    min-height: 400px;
+}
+
+.blue-text.text-darken-4 {
+    color: #00003D !important;
+}
+
+.error {
+    border: 2px solid darkred;
+    background-color: red;
+    color: white;
+    padding: 2em;
+}
+
+.parallax-container .section {
+    width: 100%;
+    margin-top: 40px;
+    z-index: 2;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.btn.mdi:hover:before {
+    fill: white;
+    color: white;
+}
+
+.title_h1{
+    color: #1C2A48 !important;
+    font-size: 8rem;
+    margin: 0 4%;
+    border-bottom: 4px solid #FFFFFF;
+    text-align: center;
+}
+
+.title_h2{
+    color: #1C2A48 !important;
+    font-size: 4rem;
+    margin: 3% 4% 30px 4%;
+    top: 2%;
+    border-bottom: 4px solid #FFF500;
+    text-align: center;
+}
+
+.blue.darken-4,
+.blue-background {
+    background-color: #00003D !important;
+}
+
+a.blue-background:hover {
+    background-color: #00003D !important;
+    box-shadow: 0 0 10px black;
+}
+
+.yellow-background{
+    background-color: #FFF500;
+}
+
+a.yellow-background:hover{
+    background-color: #FFF500;
+    box-shadow: 0 0 10px black;
+}
+
+.green-background{
+    background-color: #009E3F;
+}
+
+.red-background{
+    background-color: #f93f26;
+}
+
+.btn-floating:hover{
+    background-color: #039be5 !important;
+}
+
+.fixed-action-btn ul a.btn-floating {
+    opacity: 0;
+}
+
+.fixed-action-btn{
+    display: none;
+}
+
+.dropdown-content{
+    min-width: 250px;
+    top: 45px !important;
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+    color: rgba(0,0,61,0.8);
+}
+
+.dropdown-content > li >a > i{
+    float: left;
+    margin-right: 10px;
+}
+
+.collapsible-body > ul{
+    -webkit-padding-start: 46px;
+    text-align: start;
+}
+
+.collapsible-body > ul > li{
+    display: table;
+    width: 100%;
+}
+
+.input-bottom-bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+
+.button-collapse {
+    color: #fff;
+}
+
+.mask{
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+}
+
+.pattern-1{
+    background-image: url(../img/overlays/overlay_dunkel.png);
+}
+.pattern-2{
+    background-image: url(../img/overlays/08.png);
+}
+
+.footer-links > a {
+    margin: 0 10px;
+}
+
+.scrollfire_1,
+.scrollfire_2,
+.scrollfire_3,
+.scrollfire_4{
+    opacity: 0;
+}
+
+.fixed-action-btn{
+    bottom: 48px;
+    right: 48px;
+}
+
+#form__login {
+    padding: 20px;
+}
+/*  Ab hier ist L */
+@media only screen and (min-width: 993px) {
+
+}
+
+/* Bis hier ist M */
+@media only screen and (max-width : 992px) {
+
+    .title_h1{
+        font-size: 5rem;
+    }
+
+    .title_h2{
+        font-size: 3rem;
+        margin-top: 40px;
+    }
+
+    .fixed-action-btn{
+        bottom: 24px;
+        right: 24px;
+    }
+
+}
+
+/* Bis hier ist S */
+@media only screen and (max-width : 600px) {
+
+    .fixed-action-btn{
+        bottom: 12px;
+        right: 12px;
+    }
+
+}
+

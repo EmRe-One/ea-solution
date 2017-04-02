@@ -1,0 +1,7 @@
+{
+    "$scheme": "",
+    "resourceType": "modules/nav/nav",
+    "identifier": "nav-main",
+    "nav_background": "/Resources/img/headers/header1.png",
+    "sidenav": true
+}

@@ -12,6 +12,7 @@ class HomeController extends Controller {
 
         return $this->view->render($res, 'app.twig',
             [   'title' => 'Home',
+                'nav' => $moduleTwig->getRenderedTwig('modules/nav/nav.json'),
                 'modules' => [
                     $moduleTwig->getRenderedTwig('modules/header/header_main.json'),
                     $moduleTwig->getRenderedTwig('modules/slider/slider.json')

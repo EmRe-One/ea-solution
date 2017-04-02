@@ -13,11 +13,9 @@ use App\Models\User;
 
 class UserAvailable extends AbstractRule{
 
-    public function validate($input){
+    public function validate($input) {
         return User::where('_id', $input)->count() === 0;
     }
-
-
 }
 
 ?>

@@ -2,33 +2,25 @@
 
     <div class="container valign">
         <div class="row">
-            <div class="error">
-                {% for e in errors %}
-                    {{ e }}
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="row">
             <div class="card col offset-s2 s8 z-depth-2">
                 <form id="form__login" method="POST" action='{{ action }}' autocomplete='off'>
                     <div class="row">
                         <h2 class="center card-title">Login</h2>
+
                         <div class="row">
                             <div class="input-field col s8 offset-s2 left-align">
                                 <i class="mdi mdi-email mdi-24px mdi-dark prefix"></i>
-                                <input id="form_email" name="email" type="email" class="validate"
-                                        {% if userLogin %}
-                                            value="{{ userLogin.email }}"
-                                        {% endif %} required>
-                                <label for="form_email" date-error="Fehlerhafte E-Mail">E-Mail:</label>
+                                <input id="form_email" name="email" type="email" class="validate {{ errors.email ? 'invalid' : ''}}"
+                                        value="{{ old.email }}" required>
+                                <label for="form_email" data-error="{{ errors.email | first }}">E-Mail:</label>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="input-field col s8 offset-s2 left-align">
                                 <i class="mdi mdi-login mdi-24px mdi-dark prefix"></i>
-                                <input id="form_password" name="password" type="password" required>
-                                <label for="form_password">Password:</label>
+                                <input id="form_password" name="password" type="password" class="validate {{ errors.password ? 'invalid' : ''}}" required>
+                                <label for="form_password" data-error="{{ errors.password | first }}">Password:</label>
                             </div>
                         </div>
                     </div>

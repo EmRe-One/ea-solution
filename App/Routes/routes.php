@@ -4,12 +4,13 @@ $app->get('/api', 'HomeController:getApi')->setName('api');
 
 $app->group('', function (){
 
-    $this->get('/registry', 'UserController:getRegistryView')->setName('user.registry');
-    $this->post('/registry', 'UserController:postRegistry');
+    $this->get('/registry', 'AuthController:getRegistryView')->setName('auth.registry');
+    $this->post('/registry', 'AuthController:postRegistry');
 
-    $this->get('/login', 'AuthController:getLoginView');
-    $this->post('/login', 'AuthController:postLogin')->setName('auth.login');
+    $this->get('/login', 'AuthController:getLoginView')->setName('auth.login');
+    $this->post('/login', 'AuthController:postLogin');
 
+    $this->get('/logout', 'AuthController:getLogout')->setName('auth.logout');
 });
 
 

@@ -8,7 +8,7 @@ class EmailAvailableException extends ValidationException{
 
     public static $defaultTemplates = [
         self::MODE_DEFAULT => [
-            self::STANDARD => 'Email is already registered.'
+            self::STANDARD => 'Email ist bereits registriert.'
         ]
     ];
 

@@ -1,20 +1,6 @@
 <section class="parallax-container valign-wrapper vh100">
 
     <div class="container valign">
-        {% if errors %}
-            <div class="row">
-                <div class="col offset-s2 s8">
-                    <div class="error">
-                        <ul>
-                            {% for key,value in errors %}
-                                <li>{{ key }} => {{ value[0] }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-
         <div class="row">
             <div class="card col offset-s2 s8 z-depth-2">
                 <form id="form__registry" method="POST" action='{{ action }}' autocomplete='off'>
@@ -27,45 +13,41 @@
                         <div class="row ">
                             <div class="input-field col offset-s2 s4">
                                 <i class="mdi mdi-contacts mdi-24px mdi-dark prefix"></i>
-                                <input id="form_vorname" name="vorname" type="text" class="validate"
-                                        {% if userRegistry and userRegistry.vorname %}
-                                            value="{{ userRegistry.vorname }}"
-                                        {% endif %} required tabindex="0">
-                                <label for="form_vorname" date-error="Fehlerhafter Vorname">Vorname</label>
+                                <input id="form_vorname" name="vorname" type="text" class="validate {{ errors.vorname ? 'invalid' : ''}}"
+                                        value="{{ old.vorname }}" required tabindex="0">
+                                <label for="form_vorname" data-error="{{ errors.vorname | first }}">Vorname</label>
                             </div>
 
                             <div class="input-field col s4">
-                                <input id="form_name" name="name" type="text" class="validate"
-                                        {% if userRegistry and userRegistry.name %}
-                                            value="{{ userRegistry.name }}"
-                                        {% endif %} required tabindex="0">
-                                <label for="form_name" date-error="Fehlerhafter Name">Name</label>
+                                <input id="form_name" name="name" type="text" class="validate {{ errors.name ? 'invalid' : ''}}"
+                                        value="{{ old.name }}" required tabindex="0">
+                                <label for="form_name" data-error="{{ errors.name | first }}">Name</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s8 offset-s2 left-align">
                                 <i class="mdi mdi-email mdi-24px mdi-dark prefix"></i>
-                                <input id="form_email" name="email" type="email" class="validate"
-                                        {% if userRegistry and userRegistry.email%}
-                                            value="{{ userRegistry.email }}"
-                                        {% endif %} required tabindex="0">
-                                <label for="form_email" date-error="Fehlerhafte E-Mail">E-Mail:</label>
+                                <input id="form_email" name="email" type="email" class="validate {{ errors.email ? 'invalid' : ''}}"
+                                        value="{{ old.email }}" required tabindex="0">
+                                <label for="form_email" data-error="{{ errors.email | first }}">E-Mail:</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s8 offset-s2 left-align">
                                 <i class="mdi mdi-login mdi-24px mdi-dark prefix"></i>
-                                <input id="form_password" name="password" type="password" required tabindex="0">
-                                <label for="form_password">Password:</label>
+                                <input id="form_password" name="password" type="password" class="validate {{ errors.password ? 'invalid' : ''}}"
+                                       required tabindex="0">
+                                <label for="form_password" data-error="{{ errors.password | first }}">Password:</label>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="input-field col s8 offset-s2 left-align">
                                 <i class="mdi mdi-login mdi-24px mdi-dark prefix"></i>
-                                <input id="form_repeat_password" name="repeat_password" type="password" required tabindex="0">
+                                <input id="form_repeat_password" name="repeat_password" type="password" class="validate {{ errors.password ? 'invalid' : ''}}"
+                                       required tabindex="0">
                                 <label for="form_repeat_password">Password wiederholen:</label>
                             </div>
                         </div>

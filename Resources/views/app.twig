@@ -3,16 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>EA - Solution | {{ title }}</title>
+
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- Lato Font -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/materialdesignicons.min.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/material-components-web.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/materialize.min.css" media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/materialdesignicons.min.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/material-components-web.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/gallery-dark-materialize.css"/>
+<!--
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/_global.css"/>
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/nav/_nav.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/footer/_footer.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/footer/_footer.css"/>-->
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/_custom.css"/>
 
     <!--Let browser know website is optimized for mobile-->
@@ -29,7 +35,12 @@
 
 <div id="top_section"></div>
 
-{% include 'partials/nav.twig' %}
+{% if nav %}
+    {{ nav | raw }}
+{% else %}
+    {% include 'partials/nav.twig' %}
+{% endif %}
+
 {% include 'partials/fab.twig' %}
 
 {% if not user %}
@@ -47,11 +58,17 @@
 <div id="html_seitenende"></div>
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/jquery-3.2.0.min.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/materialize.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/skrollr.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/jquery.waypoints.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/material-components-web.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/_custom.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/materialize.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/color-thief.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/galleryExpand.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/init.js"></script>
+
+{#<script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/_custom.js"></script>#}
 </body>
 </html>
