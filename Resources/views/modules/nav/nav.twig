@@ -4,7 +4,7 @@
         <img class="active" src="{{ nav_background }}" alt="control room">
     </div>
     <div class="nav-wrapper container">
-        <a href="{{ base_url() }}" class="brand-logo"><i class="mdi mdi-android"></i>EA-Solution</a>
+        <a href="{{ base_url() }}" class="brand-logo"><i class="mdi mdi-code-tags"></i>EA-Solution</a>
         {% if sidenav %}
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         {% endif %}
@@ -13,6 +13,7 @@
             <li><a href="index-dark.html">Dark Theme</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="docs.html">Docs</a></li>
+            <li><a href="http://moodle.ea-solution.de">Moodle</a></li>
 
             {% if auth.check %}
                 <li><a class='dropdown-button' data-activates='profil-dropdown' data-belowOrigin="true" data-constrainWidth="false">{{ auth.user._vorname }} {{ auth.user._name }}<i class="material-icons right">arrow_drop_down</i></a></li>
