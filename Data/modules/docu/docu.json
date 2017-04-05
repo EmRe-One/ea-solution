@@ -1,0 +1,10 @@
+{
+    "$scheme": "",
+    "resourceType": "modules/docu/docu",
+    "identifier": "docu",
+    "docs": [
+        {
+            "json": "modules/code/code_1.json"
+        }
+    ]
+}

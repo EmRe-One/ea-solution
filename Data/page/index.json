@@ -1,0 +1,17 @@
+{
+    "$scheme": "",
+    "resourceType": "app",
+    "identifier": "home",
+    "title": "EA-Solution | Home",
+    "nav": {
+        "json": "modules/nav/nav.json"
+    },
+    "body": [
+        {
+            "json": "modules/docu/docu.json"
+        },
+        {
+            "json": "modules/code/code_1.json"
+        }
+    ]
+}

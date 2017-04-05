@@ -1,0 +1,14 @@
+{
+    "$scheme": "",
+    "resourceType": "app",
+    "identifier": "html__500",
+    "title": "Interner Fehler",
+    "nav": {
+        "json": "modules/nav/nav_docu.json"
+    },
+    "body": [
+        {
+            "json" : "500.json"
+        }
+    ]
+}

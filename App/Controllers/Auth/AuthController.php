@@ -5,8 +5,7 @@ namespace App\Controllers\Auth;
 use App\Controllers\Controller;
 use App\UUID;
 use Respect\Validation\Validator as v;
-use App\Modules\Module;
-use Illuminate\Database\Capsule\Manager as DB;
+use App\Modules\Includer;
 use App\Models\User;
 
 class AuthController extends Controller
@@ -18,17 +17,9 @@ class AuthController extends Controller
     }
 
     public function getLoginView($req, $res) {
+        $e = (new Includer($this->container))->include('page/login.json');
 
-        $moduleTwig = new Module( $this->container );
-
-        return $this->view->render($res, 'app.twig',
-            [   'title' => 'Login',
-                'nav' => $moduleTwig->getRenderedTwig('modules/nav/nav.json'),
-                'modules' => [
-                    $moduleTwig->getRenderedTwig( 'modules/form/login.json')
-                ]
-            ]
-        );
+        return $res->write($e);
     }
 
     public function postLogin($req, $res)
