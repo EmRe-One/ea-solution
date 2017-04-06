@@ -1,0 +1,15 @@
+{
+    "$scheme": "",
+    "resourceType": "app",
+    "identifier": "html__404",
+    "title": "EA-Solution | Seite nicht gefunden",
+    "nav": {
+        "json": "modules/nav/nav_docu.json",
+        "active": ""
+    },
+    "body": [
+        {
+            "json" : "modules/errorpages/404.json"
+        }
+    ]
+}

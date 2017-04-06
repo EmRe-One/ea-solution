@@ -17,17 +17,17 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/materialize.min.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/materialdesignicons.min.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/material-components-web.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/gallery-dark-materialize.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/gallery-materialize.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/vendor/prism.css"/>
-<!--
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/_global.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/nav/_nav.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/footer/_footer.css"/>-->
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/_custom.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/materialize.min.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/materialdesignicons.min.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/material-components-web.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/gallery-dark-materialize.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/gallery-materialize.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/prism.css"/>
+
+    <!-- <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/_global.css"/> -->
+    <!-- <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/nav/_nav.css"/> -->
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/modules/footer/_footer.css"/>
+    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/_custom.css"/>
 
     <!-- Import Google API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -40,7 +40,7 @@
 
 <div id="top_section"></div>
 
-{{ include(nav.json) | raw }}
+{{ includeNav( nav ) | raw }}
 
 {% include 'partials/fab.twig' %}
 
@@ -59,21 +59,21 @@
 <div id="html_seitenende"></div>
 
 <!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/jquery-3.2.0.min.js"></script>
 {#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/skrollr.min.js"></script>#}
 {#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/jquery.waypoints.min.js"></script>#}
 {#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/material-components-web.js"></script>#}
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/prism.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/imagesloaded.pkgd.min.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/masonry.pkgd.min.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/materialize.min.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/color-thief.min.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/galleryExpand.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/prism.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/materialize.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/color-thief.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/galleryExpand.js"></script>
 {#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/init.js"></script>#}
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/docs-init.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/docs-init.js"></script>
 
 
-{#<script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/js/_custom.js"></script>#}
+{#<script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>#}
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/_custom.js"></script>
 </body>
 </html>

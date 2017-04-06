@@ -16,7 +16,7 @@ class Module {
 
     public function __construct($container)
     {
-        $this->basedir = __DIR__ . '/../../Data/';
+        $this->basedir = __DIR__ . '/../../data/';
         $this->container = $container;
     }
 

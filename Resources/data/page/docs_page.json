@@ -1,0 +1,17 @@
+{
+    "$scheme": "",
+    "resourceType": "app",
+    "identifier": "home",
+    "title": "EA-Solution | Dokumentation",
+    "nav": {
+        "json": "modules/nav/nav_docu.json",
+        "active": "docs",
+        "caption": "DOCUMENTATION",
+        "subline": "Learn how to do stuff"
+    },
+    "body": [
+        {
+            "json": "modules/docs/docs.json"
+        }
+    ]
+}

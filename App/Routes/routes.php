@@ -1,7 +1,7 @@
 <?php
 
 $app->get('/api', 'HomeController:getApi')->setName('api');
-$app->get('/docs', 'HomeController:getDocuPage')->setName('docu');
+$app->get('/docs', 'HomeController:getDocsPage')->setName('docs');
 
 
 $app->group('', function (){

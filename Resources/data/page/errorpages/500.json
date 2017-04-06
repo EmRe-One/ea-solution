@@ -1,0 +1,15 @@
+{
+    "$scheme": "",
+    "resourceType": "app",
+    "identifier": "html__500",
+    "title": "EA-Solution | Interner Fehler",
+    "nav": {
+        "json": "modules/nav/nav_docu.json",
+        "active": ""
+    },
+    "body": [
+        {
+            "json" : "modules/errorpages/500.json"
+        }
+    ]
+}

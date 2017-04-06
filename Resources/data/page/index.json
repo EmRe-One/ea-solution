@@ -1,0 +1,23 @@
+{
+    "$scheme": "",
+    "resourceType": "app",
+    "identifier": "home",
+    "title": "EA-Solution | Home",
+    "nav": {
+        "json": "modules/nav/nav.json",
+        "active": "home",
+        "caption": "Beat the Beast",
+        "subline": "EA - Solution - Let the Development begin"
+    },
+    "body": [
+        {
+            "json": "modules/header/header_main.json"
+        },
+        {
+            "json": "modules/code/code_1.json"
+        },
+        {
+            "json": "modules/code/code_3.json"
+        }
+    ]
+}

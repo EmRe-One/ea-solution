@@ -1,0 +1,11 @@
+{
+    "$scheme": "",
+    "resourceType": "modules/code/code",
+    "identifier": "Beispiel-Code2",
+    "header": "Beispiel-Code",
+    "caption": "du musst hier mal sehen was hier so tolles steht: ",
+    "toBeWrap": false,
+    "language":"markup",
+    "linestart": "76",
+    "code": "<html>\n<head>\n    <title>Hallo World</title>\n</head>\n<body>\n    <nav>\n        <ul>\n            <li>\n                <!-- .... -->\n            </li>\n        </ul>\n    </nav>\n    \n    <main>\n        <div>\n            coooolee scheiße\n        </div>\n    </main>\n</body>\n</html>"
+}

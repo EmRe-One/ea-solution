@@ -1,10 +1,25 @@
-<div id="{{ identifier }}" class="scrollspy">
-    <h3>{{ header }}</h3>
-    <p class="caption">
-        {{ header }}
-    </p>
+{% if toBeWrap %}
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 l9">
+{% endif %}
 
-    <pre {% if linestart %}class="line-numbers" data-start={{ linestart }} {% endif %}>
-        <code class=" language-{{ language }}">{{ code }}</code>
-    </pre>
+        <div {% if identifier %} id="{{ identifier }}" class="scrollspy" {% endif %}>
+            <h3>{{ header }}</h3>
+
+            <p class="caption">
+                {{ caption }}
+            </p>
+
+            <pre {% if linestart %}class="line-numbers" data-start={{ linestart }} {% endif %}>
+                <code class=" language-{{ language }}">{{ code }}</code>
+            </pre>
+        </div>
+
+{% if toBeWrap %}
+            </div>
+        </div>
+    </div>
 </div>
+{% endif %}

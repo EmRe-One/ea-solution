@@ -1,0 +1,11 @@
+{
+    "$scheme": "",
+    "resourceType": "modules/code/code",
+    "identifier": "Beispiel-Code3",
+    "header": "Java-Code",
+    "caption": "du musst hier mal sehen was hier so tolles steht: ",
+    "toBeWrap": true,
+    "language":"java",
+    "linestart": "23",
+    "code": "public static void main(String[] args) {\n    \n    // Create a new Instance\n    Auto a = new Auto(300, 24);\n    \n    a.fahreNachHause(\"Berlin\");\n    \n}"
+}

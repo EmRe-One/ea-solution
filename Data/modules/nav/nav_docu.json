@@ -1,7 +1,0 @@
-{
-    "$scheme": "",
-    "resourceType": "modules/nav/nav_docu",
-    "identifier": "nav-main",
-    "nav_background": "icon-seamless.png",
-    "sidenav": true
-}

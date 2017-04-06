@@ -1,0 +1,59 @@
+body,
+html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.btn-primary {
+    background-color: #2196f3;
+}
+
+.btn-primary:hover {
+    background-color: #17cef3;
+}
+
+.brand-logo > i {
+    background: url(../img/logos/ea_atom_large.svg);
+}
+
+nav .categories-wrapper .categories-container.pinned li.active > a {
+    color: #2196f3;
+}
+
+.section:not(.table-of-contents) {
+    position: relative;
+}
+
+
+.mask {
+    height: 100%;
+    position: absolute;
+    margin-top: -1.5rem;
+    width: calc(100% + 1.5rem);
+    z-index: -1;
+}
+
+.mask.op-2 {
+    opacity: .2;
+}
+
+
+.pattern-1 {
+    background: repeat url(../img/overlays/overlay_dunkel.png);
+}
+
+.pattern-2 {
+    background: repeat url(../img/overlays/overlay_hell.png);
+}
+
+.pattern-3 {
+    background: repeat url(../img/overlays/pattern-black.png);
+}
+
+.pattern-4 {
+    background: repeat url(../img/overlays/pattern.png);
+}
+
+.pattern-5 {
+    background: repeat url(../img/overlays/icon-seamless.png);
+}

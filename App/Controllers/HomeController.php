@@ -13,8 +13,8 @@ class HomeController extends Controller {
         return $res->write($e);
     }
 
-    public function getDocuPage($req, $res) {
-        $e = (new Includer($this->container))->include('page/docu.json');
+    public function getDocsPage($req, $res) {
+        $e = (new Includer($this->container))->include('page/docs_page.json');
 
         return $res->write($e);
     }

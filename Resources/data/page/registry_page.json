@@ -1,0 +1,15 @@
+{
+    "$scheme": "",
+    "resourceType": "app",
+    "identifier": "home",
+    "title": "EA-Solution | Registrieren",
+    "nav": {
+        "json": "modules/nav/nav_docu.json",
+        "active": "registry"
+    },
+    "body": [
+        {
+            "json": "modules/form/registry.json"
+        }
+    ]
+}

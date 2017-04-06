@@ -1,10 +1,10 @@
 <!-- 500 -->
-<div id="{{ identifier }}" class="parallax-container valign-wrapper">
-    <div class="mask pattern-1"></div>
-    <div class="parallax"><img src=""></div>
-    <div class="section no-pad-bot valign">
-        <div class="container">
-            <br><br>
+<div id="{{ identifier }}" class="section no-pad-bot">
+    <div class="mask pattern-4"></div>
+    <div class="container">
+        <div class="row valign">
+
+            {{ error500 | json_encode }}
             <h1 class="header center title_h1">500</h1>
             <div class="row center">
                 <p class="col s12 blue-text text-darken-4">
@@ -13,19 +13,17 @@
 
                     ERROR
                     <br>
-                    Message: {{ error.message }}
+                    Message: {{ error500.message }}
                     <br>
-                    File: {{ error.file }}
+                    File: {{ error500.file }}
                     <br>
-                    Line: {{ error.line }}
+                    Line: {{ error500.line }}
                 </p>
             </div>
             <!--<div class="row center">
                 <a href="http://www.ea-solution.de" id="download-button"
                    class="btn-large waves-effect waves-light blue lighten-1">Get Started</a>
             </div>-->
-            <br>
-            <br>
         </div>
     </div>
 </div>
