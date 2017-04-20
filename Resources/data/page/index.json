@@ -2,6 +2,7 @@
     "$scheme": "",
     "resourceType": "app",
     "identifier": "home",
+    "analytics": true,
     "title": "EA-Solution | Home",
     "nav": {
         "json": "modules/nav/nav.json",
@@ -15,6 +16,9 @@
         },
         {
             "json": "modules/code/code_1.json"
+        },
+        {
+            "json": "modules/docs/docs.json"
         },
         {
             "json": "modules/code/code_3.json"

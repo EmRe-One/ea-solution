@@ -4,14 +4,6 @@
     "identifier": "docs",
     "tableOfContents": true,
     "docs": [
-        {
-            "json": "modules/code/code_2.json"
-        },
-        {
-            "json": "modules/code/code_2.json"
-        },
-        {
-            "json": "modules/code/code_3.json"
-        }
+
     ]
 }

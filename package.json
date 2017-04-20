@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/Emre-One/ea-solution#readme",
   "dependencies": {
-    "material-components-web": "^0.7.0"
+    "material-components-web": "^0.7.0",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
   }
 }

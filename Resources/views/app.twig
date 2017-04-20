@@ -17,16 +17,22 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/materialize.min.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/materialdesignicons.min.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/material-components-web.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/gallery-dark-materialize.css"/>
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/gallery-materialize.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="{{ base_url() }}/Resources/static/assets/css/vendor/materialize.min.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="{{ base_url() }}/Resources/static/assets/css/vendor/materialdesignicons.min.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="{{ base_url() }}/Resources/static/assets/css/vendor/material-components-web.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="{{ base_url() }}/Resources/static/assets/css/vendor/gallery-dark-materialize.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="{{ base_url() }}/Resources/static/assets/css/vendor/gallery-materialize.css"/>
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/vendor/prism.css"/>
 
     <!-- <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/_global.css"/> -->
     <!-- <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/css/modules/nav/_nav.css"/> -->
-    <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/modules/footer/_footer.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="{{ base_url() }}/Resources/static/assets/css/modules/footer/_footer.css"/>
     <link type="text/css" rel="stylesheet" href="{{ base_url() }}/Resources/static/assets/css/_custom.css"/>
 
     <!-- Import Google API-->
@@ -37,6 +43,13 @@
 </head>
 
 <body>
+<!-- Start Page Loading -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+<!-- End Page Loading -->
 
 <div id="top_section"></div>
 
@@ -64,16 +77,38 @@
 {#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/jquery.waypoints.min.js"></script>#}
 {#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/material-components-web.js"></script>#}
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/prism.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript"
+        src="{{ base_url() }}/Resources/static/assets/js/vendor/imagesloaded.pkgd.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/masonry.pkgd.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/materialize.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/color-thief.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/galleryExpand.js"></script>
-{#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/init.js"></script>#}
+
+
+{#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/init.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>#}
+
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/_custom.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/docs-init.js"></script>
 
-
-{#<script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>#}
-<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/_custom.js"></script>
+{% if analytics %}
+    <!-- Hotjar Tracking Code for www.ea-solution.de -->
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () {
+                    (h.hj.q = h.hj.q || []).push(arguments)
+                };
+            h._hjSettings = {
+                hjid: 469447,
+                hjsv: 5
+            };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script');
+            r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+{% endif %}
 </body>
 </html>
