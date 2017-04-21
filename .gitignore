@@ -10,3 +10,4 @@ composer.phar
 favicon.ico
 .htaccess
 /Resources/app.php
+fonts/

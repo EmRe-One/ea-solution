@@ -18,10 +18,10 @@
             "json": "modules/code/code_1.json"
         },
         {
-            "json": "modules/docs/docs.json"
+            "json": "modules/code/code_3.json"
         },
         {
-            "json": "modules/code/code_3.json"
+            "json": "modules/tex/tex_1.json"
         }
     ]
 }

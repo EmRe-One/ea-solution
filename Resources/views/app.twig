@@ -80,7 +80,7 @@
 <script type="text/javascript"
         src="{{ base_url() }}/Resources/static/assets/js/vendor/imagesloaded.pkgd.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/masonry.pkgd.min.js"></script>
-<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/materialize.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/materialize.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/color-thief.min.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/galleryExpand.js"></script>
 
@@ -88,8 +88,21 @@
 {#<script type="text/javascript" src="{{ base_url() }}/Resources/js/vendor/init.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/js/_global.js"></script>#}
 
-<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/_custom.js"></script>
 <script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/vendor/docs-init.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/js/_custom.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+    });
+</script>
+<script type="text/javascript" src="{{ base_url() }}/Resources/static/assets/tex/MathJax.js?locale=de"></script>
 
 {% if analytics %}
     <!-- Hotjar Tracking Code for www.ea-solution.de -->

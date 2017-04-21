@@ -1,0 +1,11 @@
+<div {% if identifier %} id="{{ identifier }}" class="scrollspy" {% endif %}>
+    <h3>{{ header }}</h3>
+
+    <p class="caption">
+        {{ caption }}
+    </p>
+
+    {% for t in tex %}
+        {{ t.code | raw }}
+    {% endfor %}
+</div>
